@@ -1,0 +1,3 @@
+To find root user files
+
+find / -user root -perm -4000 -exec ls -ldb {} \;
