@@ -1,0 +1,148 @@
+root@kali:~# nmap -T4 -sC -A -vv 10.10.131.22 blue/nmap_full.txt
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-04-20 15:02 UTC
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:02
+Completed NSE at 15:02, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:02
+Completed NSE at 15:02, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:02
+Completed NSE at 15:02, 0.00s elapsed
+Unable to split netmask from target expression: "blue/nmap_full.txt"
+Initiating ARP Ping Scan at 15:02
+Scanning 10.10.131.22 [1 port]
+Completed ARP Ping Scan at 15:02, 0.04s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 15:02
+Completed Parallel DNS resolution of 1 host. at 15:02, 0.00s elapsed
+Initiating SYN Stealth Scan at 15:02
+Scanning ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22) [1000 ports]
+Discovered open port 135/tcp on 10.10.131.22
+Discovered open port 445/tcp on 10.10.131.22
+Discovered open port 3389/tcp on 10.10.131.22
+Discovered open port 139/tcp on 10.10.131.22
+Discovered open port 49154/tcp on 10.10.131.22
+Increasing send delay for 10.10.131.22 from 0 to 5 due to 92 out of 229 dropped probes since last increase.
+Discovered open port 49159/tcp on 10.10.131.22
+Discovered open port 49152/tcp on 10.10.131.22
+Discovered open port 49158/tcp on 10.10.131.22
+Discovered open port 49153/tcp on 10.10.131.22
+Completed SYN Stealth Scan at 15:02, 5.19s elapsed (1000 total ports)
+Initiating Service scan at 15:02
+Scanning 9 services on ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Service scan Timing: About 55.56% done; ETC: 15:04 (0:00:42 remaining)
+Completed Service scan at 15:03, 58.57s elapsed (9 services on 1 host)
+Initiating OS detection (try #1) against ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Retrying OS detection (try #2) against ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Retrying OS detection (try #3) against ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Retrying OS detection (try #4) against ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Retrying OS detection (try #5) against ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+NSE: Script scanning 10.10.131.22.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:04
+Completed NSE at 15:04, 15.14s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:04
+NSE Timing: About 98.61% done; ETC: 15:04 (0:00:00 remaining)
+Completed NSE at 15:05, 60.01s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:05
+Completed NSE at 15:05, 0.00s elapsed
+Nmap scan report for ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+Host is up, received arp-response (0.00060s latency).
+Scanned at 2022-04-20 15:02:47 UTC for 149s
+Not shown: 991 closed ports
+Reason: 991 resets
+PORT      STATE SERVICE      REASON          VERSION
+135/tcp   open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+139/tcp   open  netbios-ssn  syn-ack ttl 128 Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds syn-ack ttl 128 Windows 7 Professional 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)
+3389/tcp  open  tcpwrapped   syn-ack ttl 128
+|_ssl-date: 2022-04-20T15:04:17+00:00; +1s from scanner time.
+49152/tcp open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+49153/tcp open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+49154/tcp open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+49158/tcp open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+49159/tcp open  msrpc        syn-ack ttl 128 Microsoft Windows RPC
+MAC Address: 02:2B:F8:69:58:59 (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=4/20%OT=135%CT=1%CU=43985%PV=Y%DS=1%DC=D%G=Y%M=022BF8%
+OS:TM=6260212C%P=x86_64-pc-linux-gnu)SEQ(SP=103%GCD=1%ISR=10F%TS=7)SEQ(SP=1
+OS:03%GCD=1%ISR=10F%CI=I%TS=7)OPS(O1=M2301NW8ST11%O2=M2301NW8ST11%O3=M2301N
+OS:W8NNT11%O4=M2301NW8ST11%O5=M2301NW8ST11%O6=M2301ST11)WIN(W1=2000%W2=2000
+OS:%W3=2000%W4=2000%W5=2000%W6=2000)ECN(R=Y%DF=Y%T=80%W=2000%O=M2301NW8NNS%
+OS:CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%
+OS:A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%
+OS:DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%
+OS:O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%
+OS:W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%
+OS:RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=80%CD=Z)
+
+Uptime guess: 0.007 days (since Wed Apr 20 14:54:33 2022)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: Busy server or unknown class
+Service Info: Host: JON-PC; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 1h15m00s, deviation: 2h30m00s, median: 0s
+| nbstat: NetBIOS name: JON-PC, NetBIOS user: <unknown>, NetBIOS MAC: 02:2b:f8:69:58:59 (unknown)
+| Names:
+|   JON-PC<00>           Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   JON-PC<20>           Flags: <unique><active>
+|   WORKGROUP<1e>        Flags: <group><active>
+|   WORKGROUP<1d>        Flags: <unique><active>
+|   \x01\x02__MSBROWSE__\x02<01>  Flags: <group><active>
+| Statistics:
+|   02 2b f8 69 58 59 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 52048/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 26344/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 41509/udp): CLEAN (Timeout)
+|   Check 4 (port 60523/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb-os-discovery: 
+|   OS: Windows 7 Professional 7601 Service Pack 1 (Windows 7 Professional 6.1)
+|   OS CPE: cpe:/o:microsoft:windows_7::sp1:professional
+|   Computer name: Jon-PC
+|   NetBIOS computer name: JON-PC\x00
+|   Workgroup: WORKGROUP\x00
+|_  System time: 2022-04-20T10:04:02-05:00
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-04-20T15:04:02
+|_  start_date: 2022-04-20T14:55:48
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.61 ms ip-10-10-131-22.eu-west-1.compute.internal (10.10.131.22)
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 15:05
+Completed NSE at 15:05, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 15:05
+Completed NSE at 15:05, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 15:05
+Completed NSE at 15:05, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 149.42 seconds
+           Raw packets sent: 1189 (55.870KB) | Rcvd: 7665 (1.465MB)
+root@kali:~# 
