@@ -5,3 +5,8 @@ nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.25.16
 Common Vulnerable Script:
 
 nmap -p 445 --script=vuln IP
+
+NFS Vulnerable Script:
+
+nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.25.16
+
