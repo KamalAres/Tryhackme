@@ -1,3 +1,7 @@
 To find root user files
 
 find / -user root -perm -4000 -exec ls -ldb {} \;
+
+To find SUID files with root permission
+
+ find / -perm -u=s -type f 2>/dev/null
