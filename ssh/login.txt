@@ -1,0 +1,5 @@
+Login to ssh using private key
+
+ssh -i id_rsa kenobi@10.10.25.16
+
+
