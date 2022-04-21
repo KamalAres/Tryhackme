@@ -1,0 +1,153 @@
+Hack into a Mr. Robot themed Windows machine. Use metasploit for initial access, utilise powershell for Windows privilege escalation enumeration and learn a new technique to get Administrator access.
+
+root@kali:~# nmap -A -T4 -vv 10.10.241.61 -o nmap.txt
+Warning: The -o option is deprecated. Please use -oN
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-04-21 17:10 UTC
+NSE: Loaded 151 scripts for scanning.
+NSE: Script Pre-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:10
+Completed NSE at 17:10, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:10
+Completed NSE at 17:10, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:10
+Completed NSE at 17:10, 0.00s elapsed
+Initiating ARP Ping Scan at 17:10
+Scanning 10.10.241.61 [1 port]
+Completed ARP Ping Scan at 17:10, 0.03s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 17:10
+Completed Parallel DNS resolution of 1 host. at 17:10, 0.00s elapsed
+Initiating SYN Stealth Scan at 17:10
+Scanning ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61) [1000 ports]
+Discovered open port 445/tcp on 10.10.241.61
+Discovered open port 139/tcp on 10.10.241.61
+Discovered open port 135/tcp on 10.10.241.61
+Discovered open port 8080/tcp on 10.10.241.61
+Discovered open port 3389/tcp on 10.10.241.61
+Discovered open port 80/tcp on 10.10.241.61
+Discovered open port 49157/tcp on 10.10.241.61
+Discovered open port 49153/tcp on 10.10.241.61
+Discovered open port 49152/tcp on 10.10.241.61
+Discovered open port 49155/tcp on 10.10.241.61
+Discovered open port 49154/tcp on 10.10.241.61
+Completed SYN Stealth Scan at 17:10, 1.41s elapsed (1000 total ports)
+Initiating Service scan at 17:10
+Scanning 11 services on ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Service scan Timing: About 63.64% done; ETC: 17:11 (0:00:31 remaining)
+Completed Service scan at 17:11, 58.56s elapsed (11 services on 1 host)
+Initiating OS detection (try #1) against ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Retrying OS detection (try #2) against ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Retrying OS detection (try #3) against ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Retrying OS detection (try #4) against ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Retrying OS detection (try #5) against ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+NSE: Script scanning 10.10.241.61.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:11
+Completed NSE at 17:11, 5.44s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:11
+NSE Timing: About 98.86% done; ETC: 17:11 (0:00:00 remaining)
+Completed NSE at 17:12, 60.01s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:12
+Completed NSE at 17:12, 0.00s elapsed
+Nmap scan report for ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+Host is up, received arp-response (0.00088s latency).
+Scanned at 2022-04-21 17:10:09 UTC for 135s
+Not shown: 989 closed ports
+Reason: 989 resets
+PORT      STATE SERVICE            REASON          VERSION
+80/tcp    open  http               syn-ack ttl 128 Microsoft IIS httpd 8.5
+| http-methods: 
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/8.5
+|_http-title: Site doesn't have a title (text/html).
+135/tcp   open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+139/tcp   open  netbios-ssn        syn-ack ttl 128 Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds       syn-ack ttl 128 Microsoft Windows Server 2008 R2 - 2012 microsoft-ds
+3389/tcp  open  ssl/ms-wbt-server? syn-ack ttl 128
+|_ssl-date: 2022-04-21T17:11:24+00:00; 0s from scanner time.
+8080/tcp  open  http               syn-ack ttl 128 HttpFileServer httpd 2.3
+|_http-favicon: Unknown favicon MD5: 759792EDD4EF8E6BC2D1877D27153CB1
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+|_http-server-header: HFS 2.3
+|_http-title: HFS /
+49152/tcp open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+49153/tcp open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+49154/tcp open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+49155/tcp open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+49157/tcp open  msrpc              syn-ack ttl 128 Microsoft Windows RPC
+MAC Address: 02:0D:AA:1A:A9:E3 (Unknown)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.80%E=4%D=4/21%OT=80%CT=1%CU=44049%PV=Y%DS=1%DC=D%G=Y%M=020DAA%T
+OS:M=62619078%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10C%TI=I%CI=I%II=I
+OS:%SS=S%TS=7)OPS(O1=M2301NW8ST11%O2=M2301NW8ST11%O3=M2301NW8NNT11%O4=M2301
+OS:NW8ST11%O5=M2301NW8ST11%O6=M2301ST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000
+OS:%W5=2000%W6=2000)ECN(R=Y%DF=Y%T=80%W=2000%O=M2301NW8NNS%CC=Y%Q=)T1(R=Y%D
+OS:F=Y%T=80%S=O%A=S+%F=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0
+OS:%Q=)T3(R=Y%DF=Y%T=80%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=
+OS:A%A=O%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=
+OS:Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=A
+OS:R%O=%RD=0%Q=)U1(R=Y%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%R
+OS:UD=G)IE(R=Y%DFI=N%T=80%CD=Z)
+
+Uptime guess: 0.047 days (since Thu Apr 21 16:04:11 2022)
+Network Distance: 1 hop
+TCP Sequence Prediction: Difficulty=262 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 0s, deviation: 0s, median: 0s
+| nbstat: NetBIOS name: STEELMOUNTAIN, NetBIOS user: <unknown>, NetBIOS MAC: 02:0d:aa:1a:a9:e3 (unknown)
+| Names:
+|   STEELMOUNTAIN<00>    Flags: <unique><active>
+|   WORKGROUP<00>        Flags: <group><active>
+|   STEELMOUNTAIN<20>    Flags: <unique><active>
+| Statistics:
+|   02 0d aa 1a a9 e3 00 00 00 00 00 00 00 00 00 00 00
+|   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+|_  00 00 00 00 00 00 00 00 00 00 00 00 00 00
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 54764/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 41777/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 53730/udp): CLEAN (Timeout)
+|   Check 4 (port 23105/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+|_smb-os-discovery: ERROR: Script execution failed (use -d to debug)
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2022-04-21T17:11:19
+|_  start_date: 2022-04-21T16:04:43
+
+TRACEROUTE
+HOP RTT     ADDRESS
+1   0.88 ms ip-10-10-241-61.eu-west-1.compute.internal (10.10.241.61)
+
+NSE: Script Post-scanning.
+NSE: Starting runlevel 1 (of 3) scan.
+Initiating NSE at 17:12
+Completed NSE at 17:12, 0.00s elapsed
+NSE: Starting runlevel 2 (of 3) scan.
+Initiating NSE at 17:12
+Completed NSE at 17:12, 0.00s elapsed
+NSE: Starting runlevel 3 (of 3) scan.
+Initiating NSE at 17:12
+Completed NSE at 17:12, 0.00s elapsed
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 135.89 seconds
+           Raw packets sent: 1168 (54.946KB) | Rcvd: 1082 (46.762KB)
