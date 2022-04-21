@@ -1,0 +1,11 @@
+To windows service in command prompt:
+
+sc start/stop service name
+
+To delete a file in command prompt:
+
+del filename
+
+To view the content of file name:
+
+type filename
