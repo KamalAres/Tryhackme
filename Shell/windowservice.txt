@@ -2,6 +2,8 @@ To windows service in command prompt:
 
 sc start/stop service name
 
+net start/stop service name
+
 To delete a file in command prompt:
 
 del filename
