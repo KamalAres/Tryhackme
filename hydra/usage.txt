@@ -1,0 +1,10 @@
+HTTP-POST-FORM
+
+hydra -l username -P passwordlist IP http-post-form "Complete URL:Complete Parameter:Error Message"
+
+Launch the URL in Burpsuite:
+
+1.  Determine the type of request
+2.  Check the complete URL after the type of request
+3.  Check the complete parameter at the bottom of the request
+4.  Check for the error message
