@@ -1,0 +1,3 @@
+If you have all the files in the same directory, you can use -R to recursively download the whole directory containing the files:
+
+smbget -R smb://fileserver/directory
