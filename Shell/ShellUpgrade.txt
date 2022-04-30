@@ -8,11 +8,8 @@ If you would like to "stabilize your shell" for easier ability in typing command
 
 (press on your keyboard) Enter
 
-(on your local host) stty raw -echo
+(on your local host) stty raw -echo && fg
 
-(on your local host) fg (you will not see your keystrokes -- trust yourself and hit Enter)
-
-(press on your keyboard) Enter
 
 (press on your keyboard) Enter
 
