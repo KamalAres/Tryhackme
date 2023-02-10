@@ -1,1 +1,14 @@
 Learn how to pivot through a network by compromising a public facing web machine and tunnelling your traffic to access other machines in Wreath's network. 
+The following topics will also be covered, albeit more briefly:
+
+      Code Analysis (Python and PHP)
+      Locating and modifying public exploits
+      Simple webapp enumeration and exploitation
+      Git Repository Analysis
+      Simple Windows Post-Exploitation techniques
+      CLI Firewall Administration (CentOS and Windows)
+      Cross-Compilation techniques
+      Coding wrapper programs
+      Simple exfiltration techniques
+      Formatting a pentest report
+      
