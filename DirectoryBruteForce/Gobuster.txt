@@ -1,0 +1,7 @@
+Dir mode
+
+gobuster dir -u https://example.com -w ~/wordlists/shortlist.txt
+
+Vhost mode
+
+gobuster vhost -u https://example.com -w common-vhosts.txt
