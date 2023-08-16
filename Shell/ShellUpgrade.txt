@@ -14,3 +14,12 @@ If you would like to "stabilize your shell" for easier ability in typing command
 (press on your keyboard) Enter
 
 (on the reverse shell) export TERM=xterm
+
+
+Now we can upgrade our reverse shell:
+
+python3 -c 'import pty;pty.spawn("/bin/bash")' then press Ctrl+Z to background the session
+tput lines;tput cols to get your terminals' rows and columns
+stty raw -echo;fg then press ENTER twice to bring the session back
+stty rows <rows #> and cols <columns #> for better text wrapping
+export TERM=xterm to be able to use the clear command
